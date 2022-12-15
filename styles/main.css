@@ -392,8 +392,8 @@ a:where(:hover, :focus, :focus-visible) {
 .panes-container {
   margin-top: calc(var(--size-800) * -1);
   width: 100vw;
-  /* overflow: hidden; */
-  overflow-y: auto;
+  overflow: hidden;
+  /* overflow-y: auto; */
 }
 
 .panes {
