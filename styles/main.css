@@ -315,6 +315,7 @@ a:where(:hover, :focus, :focus-visible) {
 
   width: 100%;
   min-height: 100vh;
+  position: relative;
 }
 
 .card-header {
@@ -382,7 +383,43 @@ a:where(:hover, :focus, :focus-visible) {
   display: none;
 }
 
+.card-body {
+  min-height: calc(
+    100vh - var(--card-header-height) - var(--card-footer-height)
+  );
+}
+
+.panes-container {
+  margin-top: calc(var(--size-800) * -1);
+  width: 100vw;
+  /* overflow: hidden; */
+  overflow-y: auto;
+}
+
+.panes {
+  display: grid;
+  grid-template-columns: repeat(5, 100vw);
+  grid-template-rows: auto;
+}
+
+.pane-container {
+  padding-inline: var(--size-400);
+  padding-bottom: var(--size-400);
+}
+
+.pane {
+  min-height: 20vh;
+  padding: var(--size-400);
+  border-radius: var(--size-400);
+  background-color: var(--clr-neutral-50);
+  box-shadow: 0 0.3em 0.5em 0 hsla(0, 0%, 0%, 0.2);
+}
+
 .card-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   min-height: var(--card-footer-height);
   background-color: var(--clr-neutral-50);
   padding: var(--size-400);
