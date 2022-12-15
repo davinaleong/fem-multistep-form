@@ -26,5 +26,57 @@
 
     <script defer src="./scripts/main.js"></script>
   </head>
-  <body></body>
+  <body class="bg-neutral-200">
+    <main class="card" data-current-step="1">
+      <div class="card-header">
+        <ul class="steps-list" role="list" data-element="steps-list">
+          <li class="steps-list__item tt-uppercase">
+            <p class="clr-primary-400">Step 1</p>
+            <h2 class="clr-neutral-50">Your Info</h2>
+          </li>
+          <li class="steps-list__item tt-uppercase">
+            <p class="clr-primary-400">Step 2</p>
+            <h2 class="clr-neutral-50">Select Plan</h2>
+          </li>
+          <li class="steps-list__item tt-uppercase">
+            <p class="clr-primary-400">Step 3</p>
+            <h2 class="clr-neutral-50">Add-ons</h2>
+          </li>
+          <li class="steps-list__item tt-uppercase">
+            <p class="clr-primary-400">Step 4</p>
+            <h2 class="clr-neutral-50">Summary</h2>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="card-panes"></div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-link" type="button" data-element="btn-go-back">
+          Go Back
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-element="btn-next-step"
+        >
+          Next Step
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-element="btn-next-step"
+        >
+          Next Step
+        </button>
+        <button
+          class="btn btn-confirm"
+          type="button"
+          data-element="btn-confirm"
+        >
+          Confirm
+        </button>
+      </div>
+    </main>
+  </body>
 </html>
