@@ -639,6 +639,7 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .addon-form__label {
+  --addon-label-bg-clr: transparent;
   --addon-label-border-clr: var(--clr-neutral-600);
 
   display: grid;
@@ -646,6 +647,7 @@ a:where(:hover, :focus, :focus-visible) {
   grid-template-rows: repeat(2, max-content);
   gap: 0 var(--size-400);
   place-items: center start;
+  background-color: var(--addon-label-bg-clr);
   outline: thin solid var(--addon-label-border-clr);
   padding: var(--size-400);
   border-radius: var(--size-200);
@@ -659,12 +661,14 @@ a:where(:hover, :focus, :focus-visible) {
   grid-row: 1 / -1;
   width: var(--addon-checkbox-size);
   height: var(--addon-checkbox-size);
+  background-color: var(--addon-checkbox-bg-clr);
   outline: thin solid var(--addon-checkbox-border-clr);
   border-radius: var(--size-50);
 }
 
 .addon-form__title {
   font-size: var(--fs-500);
+  font-weight: var(--fw-bold);
   color: var(--clr-primary-700);
 }
 
@@ -676,6 +680,23 @@ a:where(:hover, :focus, :focus-visible) {
   grid-column: 3;
   grid-row: 1 / -1;
   color: var(--clr-primary-500);
+}
+
+.addons-form-input__checkbox:checked + .addon-form__label {
+  --addon-label-bg-clr: var(--clr-neutral-200);
+  --addon-label-border-clr: var(--clr-primary-500);
+}
+
+.addons-form-input__checkbox:checked
+  + .addon-form__label
+  .addon-form__checkbox {
+  --addon-checkbox-bg-clr: var(--clr-primary-500);
+  --addon-checkbox-border-clr: var(--clr-primary-500);
+
+  background-image: url("./../images/icon-checkmark.svg");
+  background-repeat: no-repeat;
+  background-size: 0.8em 0.8em;
+  background-position: center;
 }
 
 /** Content - End **/
