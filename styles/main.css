@@ -74,6 +74,7 @@
   --fs-900: 3.5rem;
 
   --size-0: 0;
+  --size-50: 0.15rem;
   --size-100: 0.25rem;
   --size-200: 0.5rem;
   --size-300: 0.75rem;
@@ -400,9 +401,13 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .panes {
+  --panes-translate: 0 0;
+
   display: grid;
   grid-template-columns: repeat(5, 100vw);
   grid-template-rows: auto;
+  translate: var(--panes-translate);
+  transition: translate 0.3s ease-in-out;
 }
 
 .pane-container {
@@ -631,6 +636,46 @@ a:where(:hover, :focus, :focus-visible) {
   + .plan-form__label-billing
   + .plan-form__label-billing {
   color: var(--clr-primary-700);
+}
+
+.addon-form__label {
+  --addon-label-border-clr: var(--clr-neutral-600);
+
+  display: grid;
+  grid-template-columns: 2em auto 5em;
+  grid-template-rows: repeat(2, max-content);
+  gap: 0 var(--size-400);
+  place-items: center start;
+  outline: thin solid var(--addon-label-border-clr);
+  padding: var(--size-400);
+  border-radius: var(--size-200);
+}
+
+.addon-form__checkbox {
+  --addon-checkbox-size: 1em;
+  --addon-checkbox-bg-clr: transparent;
+  --addon-checkbox-border-clr: var(--clr-neutral-600);
+
+  grid-row: 1 / -1;
+  width: var(--addon-checkbox-size);
+  height: var(--addon-checkbox-size);
+  outline: thin solid var(--addon-checkbox-border-clr);
+  border-radius: var(--size-50);
+}
+
+.addon-form__title {
+  font-size: var(--fs-500);
+  color: var(--clr-primary-700);
+}
+
+.addon-form__text {
+  font-size: var(--fs-300);
+}
+
+.addon-form__price {
+  grid-column: 3;
+  grid-row: 1 / -1;
+  color: var(--clr-primary-500);
 }
 
 /** Content - End **/

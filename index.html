@@ -251,15 +251,50 @@
                   </div>
 
                   <div class="form-group-billing | mt-400">
-                    <input type="checkbox" name="yearly" id="2-billing" class="plan-form__lightswitch">
-                    <label for="2-billing" class="plan-form__label-billing">Monthly</label>
-                    <label for="2-billing" class="plan-form__label-billing">Yearly</label>
+                    <input
+                      type="checkbox"
+                      name="yearly"
+                      id="2-billing"
+                      class="plan-form__lightswitch"
+                    />
+                    <label for="2-billing" class="plan-form__label-billing"
+                      >Monthly</label
+                    >
+                    <label for="2-billing" class="plan-form__label-billing"
+                      >Yearly</label
+                    >
                   </div>
                 </form>
               </div>
             </div>
             <div class="pane-container">
-              <div class="pane" data-element="pane-3">3</div>
+              <div class="pane" data-element="pane-3">
+                <h3 class="fw-bold fs-600 text-primary-700">Pick add-ons</h3>
+
+                <p class="fs-500 mb-400">
+                  Add-ons help enhance your gaming experience.
+                </p>
+
+                <form action="" class="form addons-form">
+                  <div class="form-group form-group__addon">
+                    <input
+                      type="checkbox"
+                      name="addons[]"
+                      value="Online Service|1"
+                      id="3-online-service"
+                      class="addons-form-input__checkbox"
+                    />
+                    <label for="3-online-service" class="addon-form__label">
+                      <div class="addon-form__checkbox"></div>
+                      <p class="addon-form__title">Online service</p>
+                      <p class="addon-form__text">Access to multiplayer games</p>
+                      <p class="addon-form__price" data-element="monthly">
+                        +$1/mo
+                      </p>
+                    </label>
+                  </div>
+                </form>
+              </div>
             </div>
             <div class="pane-container">
               <div class="pane" data-element="pane-4">4</div>
