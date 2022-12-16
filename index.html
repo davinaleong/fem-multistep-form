@@ -50,7 +50,7 @@
       </div>
       <div class="card-body">
         <div class="panes-container | text-neutral-800">
-          <div class="panes" data-element="panes">
+          <div class="panes" data-element="panes" style="--panes-translate: 0 0;">
             <div class="pane-container" style="display: none">
               <div class="pane" data-element="pane-1">
                 <h3 class="fw-bold fs-600 text-primary-700">Personal Info</h3>
@@ -267,7 +267,7 @@
                 </form>
               </div>
             </div>
-            <div class="pane-container">
+            <div class="pane-container" style="display: none;">
               <div class="pane" data-element="pane-3">
                 <h3 class="fw-bold fs-600 text-primary-700">Pick add-ons</h3>
 
@@ -405,7 +405,39 @@
               </div>
             </div>
             <div class="pane-container">
-              <div class="pane" data-element="pane-4">4</div>
+              <div class="pane" data-element="pane-4">
+                <h3 class="fw-bold fs-600 text-primary-700">Finishing up</h3>
+
+                <p class="fs-500 mb-400">
+                  Double-check everything looks OK before confirming.
+                </p>
+
+                <div class="receipt" data-element="receipt">
+                    <div class="receipt__line-items">
+                        <div class="receipt__plan">
+                            <p class="receipt__plan-title">Arcade (Monthly)</p>
+                            <p class="receipt__plan-link"><button class="btn btn-link" type="button" data-element="btn-change">Change</button></p>
+                            <p class="receipt__plan-price">$9/mo</p>
+                        </div>
+                        <div class="receipt__divider"></div>
+                        <ul class="receipt__addons" role="list">
+                            <li class="receipt__addons__item">
+                                <p class="addons-title">Online service</p>
+                                <p class="addon-price">+$1/mo</p>
+                            </li>
+                            <li class="receipt__addons__item">
+                                <p class="addons-title">Online service</p>
+                                <p class="addon-price">+$1/mo</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="receipt__total">
+                        <p class="receipt__total-title">Total (per month)</p>
+                        <p class="receipt__total-price">+$12/mo</p>
+                    </div>
+                </div>
+              </div>
             </div>
             <div class="pane-container">
               <div class="pane" data-element="pane-5">5</div>
