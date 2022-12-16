@@ -544,9 +544,21 @@ a:where(:hover, :focus, :focus-visible) {
   font-size: var(--fs-300);
 }
 
-/* .form-group[data-plan="yearly"] {
+.form-group[data-plan="monthly"] {
   display: none;
-} */
+}
+
+.plan-form[data-selected-billing="monthly"] .form-group[data-plan="monthly"] {
+  display: grid;
+}
+
+.form-group[data-plan="yearly"] {
+  display: none;
+}
+
+.plan-form[data-selected-billing="yearly"] .form-group[data-plan="yearly"] {
+  display: grid;
+}
 
 /** Content - End **/
 
