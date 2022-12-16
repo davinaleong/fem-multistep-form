@@ -51,7 +51,7 @@
       <div class="card-body">
         <div class="panes-container | text-neutral-800">
           <div class="panes" data-element="panes">
-            <div class="pane-container">
+            <div class="pane-container" style="display: none">
               <div class="pane" data-element="pane-1">
                 <h3 class="fw-bold fs-600 text-primary-700">Personal Info</h3>
 
@@ -59,29 +59,198 @@
                   Please provide your name, email address, and phone number.
                 </p>
 
-                <form action="" class="form personal-info-form">
-                    <div class="form-group" data-has-error="true">
-                        <label for="name" class="form-label">Name</label>
-                        <div class="form-required-text">This field is required</div>
-                        <input type="text" name="name" class="form-input" placeholder="e.g. Stephen King">
+                <form action="#" class="form personal-info-form">
+                  <div class="form__group">
+                    <label for="1-name" class="form__label">Name</label>
+                    <div class="form__required-text">
+                      This field is required
                     </div>
+                    <input
+                      type="text"
+                      name="name"
+                      id="1-name"
+                      class="form__input"
+                      placeholder="e.g. Stephen King"
+                    />
+                  </div>
 
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <div class="form-required-text">This field is required</div>
-                        <input type="email" name="email" class="form-input" placeholder="e.g. stephenking@lorem.com">
+                  <div class="form__group">
+                    <label for="1-email" class="form__label"
+                      >Email Address</label
+                    >
+                    <div class="form__required-text">
+                      This field is required
                     </div>
+                    <input
+                      type="email"
+                      name="email"
+                      id="1-email"
+                      class="form__input"
+                      placeholder="e.g. stephenking@lorem.com"
+                    />
+                  </div>
 
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <div class="form-required-text">This field is required</div>
-                        <input type="tel" name="phone" class="form-input" placeholder="e.g. +1 234 567 890">
+                  <div class="form__group">
+                    <label for="1-phone" class="form__label"
+                      >Phone Number</label
+                    >
+                    <div class="form__required-text">
+                      This field is required
                     </div>
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="1-phone"
+                      class="form__input"
+                      placeholder="e.g. +1 234 567 890"
+                    />
+                  </div>
                 </form>
               </div>
             </div>
             <div class="pane-container">
-              <div class="pane" data-element="pane-2">2</div>
+              <div class="pane" data-element="pane-2">
+                <h3 class="fw-bold fs-600 text-primary-700">
+                  Select your plan
+                </h3>
+
+                <p class="fs-500 mb-400">
+                  You have the option of monthly or yearly billing.
+                </p>
+
+                <form
+                  action="#"
+                  class="form plan-form"
+                  data-selected-plan="arcade"
+                  data-selected-billing="monthly"
+                >
+                  <div class="form-group" data-plan="monthly">
+                    <input
+                      type="radio"
+                      name="price"
+                      id="2-arcade-monthly-radio"
+                      class="plan-form__radio visually-hidden"
+                      value="9"
+                    />
+                    <label
+                      for="2-arcade-monthly-radio"
+                      class="plan-form__label"
+                    >
+                      <img
+                        src="./images/icon-arcade.svg"
+                        alt=""
+                        class="plan-form__label__icon"
+                      />
+                      <p class="plan-form__label__title">Arcade</p>
+                      <p class="plan-form__label__price">$9/mo</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group" data-plan="monthly">
+                    <input
+                      type="radio"
+                      name="price"
+                      id="2-advanced-monthly-radio"
+                      class="plan-form__radio visually-hidden"
+                      value="12"
+                    />
+                    <label
+                      for="2-advanced-monthly-radio"
+                      class="plan-form__label"
+                    >
+                      <img
+                        src="./images/icon-advanced.svg"
+                        alt=""
+                        class="plan-form__label__icon"
+                      />
+                      <p class="plan-form__label__title">Advanced</p>
+                      <p class="plan-form__label__price">$12/mo</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group" data-plan="monthly">
+                    <input
+                      type="radio"
+                      name="price"
+                      id="2-pro-monthly-radio"
+                      class="plan-form__radio visually-hidden"
+                      value="15"
+                    />
+                    <label for="2-pro-monthly-radio" class="plan-form__label">
+                      <img
+                        src="./images/icon-pro.svg"
+                        alt=""
+                        class="plan-form__label__icon"
+                      />
+                      <p class="plan-form__label__title">Pro</p>
+                      <p class="plan-form__label__price">$15/mo</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group" data-plan="yearly">
+                    <input
+                      type="radio"
+                      name="price"
+                      id="2-arcade-yearly-radio"
+                      class="plan-form__radio visually-hidden"
+                      value="90"
+                    />
+                    <label for="2-arcade-yearly-radio" class="plan-form__label">
+                      <img
+                        src="./images/icon-arcade.svg"
+                        alt=""
+                        class="plan-form__label__icon"
+                      />
+                      <p class="plan-form__label__title">Arcade</p>
+                      <p class="plan-form__label__price">$90/yr</p>
+                      <p class="plan-form__label__free">2 months free</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group" data-plan="yearly">
+                    <input
+                      type="radio"
+                      name="price"
+                      id="2-advanced-yearly-radio"
+                      class="plan-form__radio visually-hidden"
+                      value="120"
+                    />
+                    <label
+                      for="2-advanced-yearly-radio"
+                      class="plan-form__label"
+                    >
+                      <img
+                        src="./images/icon-advanced.svg"
+                        alt=""
+                        class="plan-form__label__icon"
+                      />
+                      <p class="plan-form__label__title">Advanced</p>
+                      <p class="plan-form__label__price">$120/yr</p>
+                      <p class="plan-form__label__free">2 months free</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group" data-plan="yearly">
+                    <input
+                      type="radio"
+                      name="price"
+                      id="2-pro-yearly-radio"
+                      class="plan-form__radio visually-hidden"
+                      value="120"
+                    />
+                    <label for="2-pro-yearly-radio" class="plan-form__label">
+                      <img
+                        src="./images/icon-pro.svg"
+                        alt=""
+                        class="plan-form__label__icon"
+                      />
+                      <p class="plan-form__label__title">Pro</p>
+                      <p class="plan-form__label__price">$150/yr</p>
+                      <p class="plan-form__label__free">2 months free</p>
+                    </label>
+                  </div>
+                </form>
+              </div>
             </div>
             <div class="pane-container">
               <div class="pane" data-element="pane-3">3</div>

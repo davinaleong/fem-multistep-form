@@ -389,6 +389,7 @@ a:where(:hover, :focus, :focus-visible) {
   min-height: calc(
     100vh - var(--card-header-height) - var(--card-footer-height)
   );
+  padding-bottom: var(--card-footer-height);
 }
 
 .panes-container {
@@ -453,7 +454,7 @@ a:where(:hover, :focus, :focus-visible) {
   gap: var(--size-400);
 }
 
-.form-group {
+.form__group {
   --form-input-border-clr: var(--clr-neutral-600);
 
   display: grid;
@@ -461,7 +462,7 @@ a:where(:hover, :focus, :focus-visible) {
   grid-template-rows: repeat(2, max-content);
 }
 
-.form-required-text {
+.form__required-text {
   display: none;
   justify-self: end;
   color: var(--clr-secondary-400);
@@ -469,12 +470,12 @@ a:where(:hover, :focus, :focus-visible) {
   font-weight: var(--fw-bold);
 }
 
-.form-label {
+.form__label {
   color: var(--clr-primary-700);
   font-size: var(--fs-300);
 }
 
-.form-input {
+.form__input {
   --form-input-border-clr: var(--clr-neutral-600);
 
   grid-column: 1 / -1;
@@ -487,17 +488,65 @@ a:where(:hover, :focus, :focus-visible) {
   font-weight: var(--fw-bold);
 }
 
-.form-input:where(:focus) {
+.form__input:where(:focus) {
   --form-input-border-clr: var(--clr-primary-500);
 }
 
-.form-group[data-has-error="true"] .form-required-text {
+.form__group[data-has-error="true"] .form__required-text {
   display: block;
 }
 
-.form-group[data-has-error="true"] .form-input {
+.form__group[data-has-error="true"] .form__input {
   --form-input-border-clr: var(--clr-secondary-400);
 }
+
+.plan-form__label {
+  --form-icon-size: 2.5em;
+  --form-label-bg-clr: var(--clr-neutral-400);
+  --form-label-border-clr: var(--clr-neutral-600);
+
+  display: grid;
+  grid-template-columns: var(--form-icon-size) auto;
+  grid-template-rows: repeat(2, max-content);
+  gap: 0 var(--size-400);
+  padding: var(--size-500);
+  outline: thin solid var(--form-label-border-clr);
+  border-radius: var(--size-200);
+}
+
+.plan-form__label__icon {
+  grid-row: 1 / -1;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.plan-form__label__title {
+  color: var(--clr-primary-700);
+  font-size: var(--fs-500);
+  font-weight: var(--fw-bold);
+}
+
+.plan-form__radio:checked + .plan-form__label {
+  --form-label-border-clr: var(--clr-primary-500);
+  background-color: var(--form-label-bg-clr);
+}
+
+.form-group[data-plan="yearly"] .plan-form__label {
+  grid-template-rows: repeat(3, max-content);
+}
+
+.form-group[data-plan="yearly"] .plan-form__label__icon {
+  grid-row: 1 / -1;
+}
+
+.plan-form__label__free {
+  color: var(--clr-primary-700);
+  font-size: var(--fs-300);
+}
+
+/* .form-group[data-plan="yearly"] {
+  display: none;
+} */
 
 /** Content - End **/
 
