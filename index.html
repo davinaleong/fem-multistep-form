@@ -130,7 +130,7 @@
                       name="price"
                       id="2-arcade-monthly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="9"
+                      value="monthly|9"
                     />
                     <label
                       for="2-arcade-monthly-radio"
@@ -152,7 +152,7 @@
                       name="price"
                       id="2-advanced-monthly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="12"
+                      value="monthly|12"
                     />
                     <label
                       for="2-advanced-monthly-radio"
@@ -174,7 +174,7 @@
                       name="price"
                       id="2-pro-monthly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="15"
+                      value="monthly|15"
                     />
                     <label for="2-pro-monthly-radio" class="plan-form__label">
                       <img
@@ -193,7 +193,7 @@
                       name="price"
                       id="2-arcade-yearly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="90"
+                      value="yearly|90"
                     />
                     <label for="2-arcade-yearly-radio" class="plan-form__label">
                       <img
@@ -213,7 +213,7 @@
                       name="price"
                       id="2-advanced-yearly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="120"
+                      value="yearly|120"
                     />
                     <label
                       for="2-advanced-yearly-radio"
@@ -236,7 +236,7 @@
                       name="price"
                       id="2-pro-yearly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="120"
+                      value="yearly|150"
                     />
                     <label for="2-pro-yearly-radio" class="plan-form__label">
                       <img
@@ -275,25 +275,130 @@
                   Add-ons help enhance your gaming experience.
                 </p>
 
-                <form action="" class="form addons-form">
-                  <div class="form-group form-group__addon">
+                <form
+                  action=""
+                  class="form addons-form"
+                  data-selected-billing="monthly"
+                >
+                  <div class="form-group form-group__addon" data-plan="monthly">
                     <input
                       type="checkbox"
                       name="addons[]"
-                      value="Online Service|1"
-                      id="3-online-service"
+                      value="Online service|monthly|1"
+                      id="3-monthly-online-service"
                       class="addons-form-input__checkbox | visually-hidden"
-                      checked
                     />
-                    <label for="3-online-service" class="addon-form__label">
-                      <div class="addon-form__checkbox"></div>
-                      <p class="addon-form__title">Online service</p>
-                      <p class="addon-form__text">
+                    <label
+                      for="3-monthly-online-service"
+                      class="addons-form__label"
+                    >
+                      <div class="addons-form__checkbox"></div>
+                      <p class="addons-form__title">Online service</p>
+                      <p class="addons-form__text">
                         Access to multiplayer games
                       </p>
-                      <p class="addon-form__price" data-element="monthly">
-                        +$1/mo
+                      <p class="addons-form__price">+$1/mo</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group form-group__addon" data-plan="monthly">
+                    <input
+                      type="checkbox"
+                      name="addons[]"
+                      value="Larger storage|monthly|2"
+                      id="3-monthly-larger-storage"
+                      class="addons-form-input__checkbox | visually-hidden"
+                    />
+                    <label
+                      for="3-monthly-larger-storage"
+                      class="addons-form__label"
+                    >
+                      <div class="addons-form__checkbox"></div>
+                      <p class="addons-form__title">Larger storage</p>
+                      <p class="addons-form__text">Extra 1TB of cloud save</p>
+                      <p class="addons-form__price">+$2/mo</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group form-group__addon" data-plan="monthly">
+                    <input
+                      type="checkbox"
+                      name="addons[]"
+                      value="Customizable profile|monthly|2"
+                      id="3-monthly-customizable-profile"
+                      class="addons-form-input__checkbox | visually-hidden"
+                    />
+                    <label
+                      for="3-monthly-customizable-profile"
+                      class="addons-form__label"
+                    >
+                      <div class="addons-form__checkbox"></div>
+                      <p class="addons-form__title">Customizable profile</p>
+                      <p class="addons-form__text">
+                        Custom theme on your profile
                       </p>
+                      <p class="addons-form__price">+$2/mo</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group form-group__addon" data-plan="yearly">
+                    <input
+                      type="checkbox"
+                      name="addons[]"
+                      value="Online service|yearly|10"
+                      id="3-yearly-online-service"
+                      class="addons-form-input__checkbox | visually-hidden"
+                    />
+                    <label
+                      for="3-yearly-online-service"
+                      class="addons-form__label"
+                    >
+                      <div class="addons-form__checkbox"></div>
+                      <p class="addons-form__title">Online service</p>
+                      <p class="addons-form__text">
+                        Access to multiplayer games
+                      </p>
+                      <p class="addons-form__price">+$10/mo</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group form-group__addon" data-plan="yearly">
+                    <input
+                      type="checkbox"
+                      name="addons[]"
+                      value="Larger storage|yearly|20"
+                      id="3-yearly-larger-storage"
+                      class="addons-form-input__checkbox | visually-hidden"
+                    />
+                    <label
+                      for="3-yearly-larger-storage"
+                      class="addons-form__label"
+                    >
+                      <div class="addons-form__checkbox"></div>
+                      <p class="addons-form__title">Larger storage</p>
+                      <p class="addons-form__text">Extra 1TB of cloud save</p>
+                      <p class="addons-form__price">+$20/mo</p>
+                    </label>
+                  </div>
+
+                  <div class="form-group form-group__addon" data-plan="yearly">
+                    <input
+                      type="checkbox"
+                      name="addons[]"
+                      value="Customizable profile|yearly|20"
+                      id="3-yearly-customizable-profile"
+                      class="addons-form-input__checkbox | visually-hidden"
+                    />
+                    <label
+                      for="3-yearly-customizable-profile"
+                      class="addons-form__label"
+                    >
+                      <div class="addons-form__checkbox"></div>
+                      <p class="addons-form__title">Customizable profile</p>
+                      <p class="addons-form__text">
+                        Custom theme on your profile
+                      </p>
+                      <p class="addons-form__price">+$20/mo</p>
                     </label>
                   </div>
                 </form>
