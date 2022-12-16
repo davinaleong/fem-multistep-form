@@ -2,7 +2,9 @@
     - Root
     - Content
       - Content - General Styling
+      - Content - Layout
       - Content - Card
+      - Content - Forms
     - Utility
       - Utility - Colours
       - Utility - Background Colours
@@ -308,7 +310,7 @@ a:where(:hover, :focus, :focus-visible) {
   align-items: center;
 }
 
-/** Content - End **/
+/** Content - Card **/
 .card {
   --card-header-height: 172px;
   --card-footer-height: 72px;
@@ -409,7 +411,7 @@ a:where(:hover, :focus, :focus-visible) {
 
 .pane {
   min-height: 20vh;
-  padding: var(--size-400);
+  padding: var(--size-600);
   border-radius: var(--size-400);
   background-color: var(--clr-neutral-50);
   box-shadow: 0 0.3em 0.5em 0 hsla(0, 0%, 0%, 0.2);
@@ -444,6 +446,33 @@ a:where(:hover, :focus, :focus-visible) {
   display: inline-flex;
 }
 
+/** Content - Forms **/
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-400);
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(2, max-content);
+}
+
+.form-label {
+  color: var(--clr-primary-700);
+  font-size: var(--fs-300);
+}
+
+.form-input {
+  border: thin solid var(--clr-neutral-600);
+  border-radius: var(--size-100);
+  min-height: 2.5em;
+  padding: var(--size-200);
+}
+
+/** Content - End **/
+
 /** Utility **/
 .visually-hidden {
   position: absolute;
@@ -462,6 +491,9 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 /** Utility - Colours **/
+.text-primary-200 {
+  color: var(--clr-primary-200);
+}
 .text-primary-300 {
   color: var(--clr-primary-300);
 }
@@ -473,6 +505,9 @@ a:where(:hover, :focus, :focus-visible) {
 }
 .text-primary-600 {
   color: var(--clr-primary-600);
+}
+.text-primary-700 {
+  color: var(--clr-primary-700);
 }
 
 .text-secondary-400 {
@@ -547,6 +582,9 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 /** Utility - Background Colours **/
+.bg-primary-200 {
+  background-color: var(--clr-primary-200);
+}
 .bg-primary-300 {
   background-color: var(--clr-primary-300);
 }
@@ -558,6 +596,9 @@ a:where(:hover, :focus, :focus-visible) {
 }
 .bg-primary-600 {
   background-color: var(--clr-primary-600);
+}
+.bg-primary-700 {
+  background-color: var(--clr-primary-700);
 }
 
 .bg-secondary-400 {
