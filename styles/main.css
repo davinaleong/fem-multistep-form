@@ -454,9 +454,19 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .form-group {
+  --form-input-border-clr: var(--clr-neutral-600);
+
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, max-content);
+}
+
+.form-required-text {
+  display: none;
+  justify-self: end;
+  color: var(--clr-secondary-400);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
 }
 
 .form-label {
@@ -465,10 +475,28 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .form-input {
-  border: thin solid var(--clr-neutral-600);
+  --form-input-border-clr: var(--clr-neutral-600);
+
+  grid-column: 1 / -1;
+  outline: thin solid var(--form-input-border-clr);
+  border: none;
   border-radius: var(--size-100);
   min-height: 2.5em;
   padding: var(--size-200);
+  color: var(--clr-primary-400);
+  font-weight: var(--fw-bold);
+}
+
+.form-input:where(:focus) {
+  --form-input-border-clr: var(--clr-primary-500);
+}
+
+.form-group[data-has-error="true"] .form-required-text {
+  display: block;
+}
+
+.form-group[data-has-error="true"] .form-input {
+  --form-input-border-clr: var(--clr-secondary-400);
 }
 
 /** Content - End **/
