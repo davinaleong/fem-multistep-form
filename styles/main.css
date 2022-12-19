@@ -551,11 +551,11 @@ a:where(:hover, :focus, :focus-visible) {
   background-color: var(--form-label-bg-clr);
 }
 
-.form-group[data-plan="yearly"] .plan-form__label {
+.form-group[data-plan="yr"] .plan-form__label {
   grid-template-rows: repeat(3, max-content);
 }
 
-.form-group[data-plan="yearly"] .plan-form__label__icon {
+.form-group[data-plan="yr"] .plan-form__label__icon {
   grid-row: 1 / -1;
 }
 
@@ -564,19 +564,19 @@ a:where(:hover, :focus, :focus-visible) {
   font-size: var(--fs-300);
 }
 
-.form-group[data-plan="monthly"] {
+.form-group[data-plan="mo"] {
   display: none;
 }
 
-.form-group[data-plan="yearly"] {
+.form-group[data-plan="yr"] {
   display: none;
 }
 
-.plan-form[data-selected-billing="monthly"] .form-group[data-plan="monthly"] {
+.plan-form[data-selected-billing="mo"] .form-group[data-plan="mo"] {
   display: grid;
 }
 
-.plan-form[data-selected-billing="yearly"] .form-group[data-plan="yearly"] {
+.plan-form[data-selected-billing="yr"] .form-group[data-plan="yr"] {
   display: grid;
 }
 
@@ -586,6 +586,7 @@ a:where(:hover, :focus, :focus-visible) {
   --lightswitch-width: 3em;
   --lightswitch-height: 1.5em;
   --lightswitch-toggle-size: 1em;
+  --lightswitch-padding: 0.2em;
 
   display: flex;
   justify-content: center;
@@ -595,61 +596,62 @@ a:where(:hover, :focus, :focus-visible) {
   border-radius: var(--size-200);
 }
 
-.plan-form__lightswitch {
-  display: block;
+.plan-form__lightswitch-billing__label {
+  order: 2;
+  display: flex;
   position: relative;
+  align-items: center;
+  justify-content: start;
   width: var(--lightswitch-width);
   height: var(--lightswitch-height);
-  order: 2;
   font-size: var(--fs-500);
-}
-
-.plan-form__lightswitch::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
   background-color: var(--lightswitch-bg-clr);
   border-radius: 100vmax;
+  padding-inline: var(--lightswitch-padding);
+  transition: justify-content 0.3s ease-in-out;
 }
 
-.plan-form__lightswitch::after {
+.plan-form__lightswitch-billing__label::before {
   content: "";
   display: block;
   width: var(--lightswitch-toggle-size);
   height: var(--lightswitch-toggle-size);
   background-color: var(--lightswitch-toggle-clr);
   border-radius: 50%;
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  left: 0;
-  translate: 0.3em -50%;
-  transition: translate 0.3 ease-in-out;
+  left: var(--lightswitch-padding);
+  translate: 0 -50%;
+  transition: left 0.3s ease-in-out; */
 }
 
-.plan-form__lightswitch:checked::after {
-  translate: 1.7em -50%;
-}
-
-.plan-form__label-billing {
+.plan-form__text-billing {
   font-size: var(--fs-500);
 }
 
-.form-group-billing > .plan-form__label-billing:first-child {
+.form-group-billing > .plan-form__text-billing:first-child {
   order: 1;
 }
 
-.form-group-billing > .plan-form__label-billing:last-child {
+.form-group-billing > .plan-form__text-billing:last-child {
   order: 2;
 }
 
-.plan-form__lightswitch:not(:checked) + .plan-form__label-billing {
+.plan-form__lightswitch-billing:checked
+  + .plan-form__lightswitch-billing__label {
+  justify-content: end;
+}
+
+.plan-form__lightswitch-billing:not(:checked)
+  + .plan-form__lightswitch-billing__label
+  + .plan-form__text-billing {
   color: var(--clr-primary-700);
 }
 
-.plan-form__lightswitch:checked
-  + .plan-form__label-billing
-  + .plan-form__label-billing {
+.plan-form__lightswitch-billing:checked
+  + .plan-form__lightswitch-billing__label
+  + .plan-form__text-billing
+  + .plan-form__text-billing {
   color: var(--clr-primary-700);
 }
 

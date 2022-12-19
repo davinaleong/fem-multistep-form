@@ -51,26 +51,61 @@ const formValues = {
 
 const styleAttr = `style`
 const formAttr = `form`
+const checkedAttr = `checked`
 const dataCurrentPaneAttr = `data-current-pane`
 const dataActiveAttr = `data-active`
 const dataHasError = `data-has-error`
+const dataSelectedPlan = `data-selected-plan`
+const dataSelectedBilling = `data-selected-billing`
 
 const cardEl = document.querySelector(`[data-element="card"]`)
 const stepsListEl = document.querySelector(`[data-element="steps-list"]`)
 const panesEl = document.querySelector(`[data-element="panes"]`)
 
-const personalInfoForm = document.querySelector(`[data-element="pane-0"] form`)
-const planForm = document.querySelector(`[data-element="pane-1"] form`)
-const addonsForm = document.querySelector(`[data-element="pane-2"] form`)
+const personalInfoFormEl = document.querySelector(
+  `[data-element="pane-0"] form`
+)
+const planFormEl = document.querySelector(`[data-element="pane-1"] form`)
+const planFormRadioEls = planFormEl.querySelectorAll(`input[type="radio"]`)
+const addonsFormEl = document.querySelector(`[data-element="pane-2"] form`)
 
 const btnGoBackEl = document.querySelector(`[data-element="btn-go-back"]`)
 const btnNextStepEl = document.querySelector(`[data-element="btn-next-step"]`)
 const btnConfirmEl = document.querySelector(`[data-element="btn-confirm"]`)
 
 // Adding Event Listeners
-personalInfoForm.addEventListener(`submit`, (event) =>
-  onPersonalInfoFormSubmit(event)
+personalInfoFormEl.addEventListener(`submit`, (event) =>
+  onpersonalInfoFormElSubmit(event)
 )
+
+const billingInputEl = planFormEl.querySelector(`input[name="yearly"]`)
+billingInputEl.addEventListener(`change`, (event) => {
+  console.log(`billing input clicked`)
+  console.log(event.target.value)
+  const checked = billingInputEl.getAttribute(checkedAttr)
+
+  planFormRadioEls.forEach((planFormRadioEl) =>
+    planFormRadioEl.removeAttribute(checkedAttr)
+  )
+
+  // Yearly
+  if (checked) {
+    formValues.billing = billings.yearly
+  }
+
+  // Monthly
+  else {
+    formValues.billing = billings.monthly
+  }
+
+  planFormEl.setAttribute(dataSelectedBilling, formValues.billing)
+  planFormEl
+    .querySelector(
+      `.form-group[data-plan="${formValues.billing}"]:first-child input[type="radio"]`
+    )
+    .setAttribute(checkedAttr, checked)
+})
+planFormEl.addEventListener(`submit`, (event) => onplanFormElSubmit(event))
 
 stepsListEl
   .querySelector(`[data-element="step-0"]`)
@@ -128,7 +163,9 @@ function translatePanes(currentPane) {
   panesEl.setAttribute(styleAttr, `--panes-translate: ${translate}px 0`)
 }
 
-function onPersonalInfoFormSubmit(event) {
+function onpersonalInfoFormElSubmit(event) {
+  console.log(`fn: onpersonalInfoFormElSubmit`)
+
   event.preventDefault()
 
   formValues.personalInfo = {
@@ -137,15 +174,17 @@ function onPersonalInfoFormSubmit(event) {
     phoneNumber: "",
   }
 
-  const formGroups = personalInfoForm.querySelectorAll(`.form-group`)
+  const formGroups = personalInfoFormEl.querySelectorAll(`.form-group`)
   formGroups.forEach((formGroup) => formGroup.removeAttribute(dataHasError))
 
   let nameValid = false
   let emailValid = false
   let phoneValid = false
 
-  const name = personalInfoForm.elements[`name`]
-  const nameParent = personalInfoForm.querySelector(`#${name.id}`).parentElement
+  const name = personalInfoFormEl.elements[`name`]
+  const nameParent = personalInfoFormEl.querySelector(
+    `#${name.id}`
+  ).parentElement
 
   if (name.value !== "" && name.value.length >= 5) {
     nameValid = true
@@ -153,8 +192,8 @@ function onPersonalInfoFormSubmit(event) {
     nameParent.setAttribute(dataHasError, true)
   }
 
-  const email = personalInfoForm.elements[`email`]
-  const emailParent = personalInfoForm.querySelector(
+  const email = personalInfoFormEl.elements[`email`]
+  const emailParent = personalInfoFormEl.querySelector(
     `#${email.id}`
   ).parentElement
 
@@ -164,8 +203,8 @@ function onPersonalInfoFormSubmit(event) {
     emailParent.setAttribute(dataHasError, true)
   }
 
-  const phone = personalInfoForm.elements[`phone`]
-  const phoneParent = personalInfoForm.querySelector(
+  const phone = personalInfoFormEl.elements[`phone`]
+  const phoneParent = personalInfoFormEl.querySelector(
     `#${phone.id}`
   ).parentElement
 
@@ -186,4 +225,10 @@ function onPersonalInfoFormSubmit(event) {
     currentPane++
     translatePanes(currentPane)
   }
+}
+
+function onplanFormElSubmit(event) {
+  event.preventDefault()
+
+  console.log(`fn: onplanFormElSubmit`)
 }

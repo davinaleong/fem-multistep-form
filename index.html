@@ -55,7 +55,11 @@
             data-element="panes"
             style="--panes-translate: 0 0"
           >
-            <div class="pane-container" data-element="pane-0">
+            <div
+              class="pane-container"
+              data-element="pane-0"
+              style="display: none"
+            >
               <div class="pane">
                 <h3 class="fw-bold fs-600 text-primary-700">Personal Info</h3>
 
@@ -126,12 +130,12 @@
                   id="plan-form"
                   class="form plan-form"
                   data-selected-plan="arcade"
-                  data-selected-billing="monthly"
+                  data-selected-billing="mo"
                 >
-                  <div class="form-group" data-plan="monthly">
+                  <div class="form-group" data-plan="mo">
                     <input
                       type="radio"
-                      name="price"
+                      name="plan"
                       id="plan-arcade-monthly-radio"
                       class="plan-form__radio visually-hidden"
                       value="arcade|monthly|9"
@@ -150,10 +154,10 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="monthly">
+                  <div class="form-group" data-plan="mo">
                     <input
                       type="radio"
-                      name="price"
+                      name="plan"
                       id="plan-advanced-monthly-radio"
                       class="plan-form__radio visually-hidden"
                       value="advanced|monthly|12"
@@ -172,10 +176,10 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="monthly">
+                  <div class="form-group" data-plan="mo">
                     <input
                       type="radio"
-                      name="price"
+                      name="plan"
                       id="plan-pro-monthly-radio"
                       class="plan-form__radio visually-hidden"
                       value="pro|monthly|15"
@@ -194,10 +198,10 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="yearly">
+                  <div class="form-group" data-plan="yr">
                     <input
                       type="radio"
-                      name="price"
+                      name="plan"
                       id="plan-arcade-yearly-radio"
                       class="plan-form__radio visually-hidden"
                       value="arcade|yearly|90"
@@ -217,10 +221,10 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="yearly">
+                  <div class="form-group" data-plan="yr">
                     <input
                       type="radio"
-                      name="price"
+                      name="plan"
                       id="plan-advanced-yearly-radio"
                       class="plan-form__radio visually-hidden"
                       value="advanced|yearly|120"
@@ -240,10 +244,10 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="yearly">
+                  <div class="form-group" data-plan="yr">
                     <input
                       type="radio"
-                      name="price"
+                      name="plan"
                       id="plan-pro-yearly-radio"
                       class="plan-form__radio visually-hidden"
                       value="pro|yearly|150"
@@ -265,14 +269,14 @@
                       type="checkbox"
                       name="yearly"
                       id="plan-billing"
-                      class="plan-form__lightswitch"
+                      class="plan-form__lightswitch-billing | visually-hidden"
                     />
-                    <label for="plan-billing" class="plan-form__label-billing"
-                      >Monthly</label
-                    >
-                    <label for="plan-billing" class="plan-form__label-billing"
-                      >Yearly</label
-                    >
+                    <label
+                      for="plan-billing"
+                      class="plan-form__lightswitch-billing__label"
+                    ></label>
+                    <p class="plan-form__text-billing">Monthly</p>
+                    <p class="plan-form__text-billing">Yearly</p>
                   </div>
                 </form>
               </div>
@@ -290,7 +294,7 @@
                   class="form addons-form"
                   data-selected-billing="monthly"
                 >
-                  <div class="form-group form-group__addon" data-plan="monthly">
+                  <div class="form-group form-group__addon" data-plan="mo">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -311,7 +315,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="monthly">
+                  <div class="form-group form-group__addon" data-plan="mo">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -330,7 +334,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="monthly">
+                  <div class="form-group form-group__addon" data-plan="mo">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -351,7 +355,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="yearly">
+                  <div class="form-group form-group__addon" data-plan="yr">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -372,7 +376,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="yearly">
+                  <div class="form-group form-group__addon" data-plan="yr">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -391,7 +395,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="yearly">
+                  <div class="form-group form-group__addon" data-plan="yr">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -480,11 +484,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <button
-          class="btn btn-link"
-          type="button"
-          data-element="btn-go-back"
-        >
+        <button class="btn btn-link" type="button" data-element="btn-go-back">
           Go Back
         </button>
         <button
