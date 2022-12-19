@@ -716,11 +716,11 @@ a:where(:hover, :focus, :focus-visible) {
   background-position: center;
 }
 
-.addons-form[data-selected-billing="monthly"] .form-group[data-billing="monthly"] {
+.addons-form[data-selected-billing="mo"] .form-group[data-billing="mo"] {
   display: grid;
 }
 
-.addons-form[data-selected-billing="yearly"] .form-group[data-billing="yearly"] {
+.addons-form[data-selected-billing="yr"] .form-group[data-billing="yr"] {
   display: grid;
 }
 
