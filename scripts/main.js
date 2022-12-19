@@ -112,7 +112,10 @@ billingInputEl.addEventListener(`click`, (event) => {
   planFormEl.setAttribute(dataSelectedBilling, formValues.billing)
   addonsFormEl.setAttribute(dataSelectedBilling, formValues.billing)
 })
+
 planFormEl.addEventListener(`submit`, (event) => onPlanFormElSubmit(event))
+
+addonsFormEl.addEventListener(`submit`, (event) => onAddonsFormSubmit(event))
 
 btnGoBackEl.addEventListener(`click`, (event) => {
   let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
@@ -157,6 +160,10 @@ function resetForm() {
     note: "",
   }
   formValues.addons = []
+}
+
+function splitString(string, separator = "|") {
+  return string.split(separator)
 }
 
 function translatePanes(currentPane) {
@@ -261,7 +268,7 @@ function onPlanFormElSubmit(event) {
 
   const plan = planFormEl.elements[`plan`]
   if (plan.value) {
-    const parts = plan.value.split("|")
+    const parts = splitString(plan.value)
     formValues.plan = {
       name: parts[0],
       price: parts[1],
@@ -271,4 +278,26 @@ function onPlanFormElSubmit(event) {
     currentPane++
     translatePanes(currentPane)
   }
+}
+
+function onAddonsFormSubmit(event) {
+  console.log(`fn: onAddonsFormSubmit`)
+  event.preventDefault()
+  formValues.addons = []
+
+  const addonsCheckboxEls =
+    addonsFormEl.querySelectorAll(`input[name="addons"]`)
+  addonsCheckboxEls.forEach((addonsCheckboxEl) => {
+    if (addonsCheckboxEl.checked) {
+      const parts = splitString(addonsCheckboxEl.value)
+      formValues.addons.push({
+        name: parts[0],
+        price: parts[1],
+      })
+    }
+  })
+
+  console.log(formValues.addons)
+
+  //TODO: Translate pane
 }
