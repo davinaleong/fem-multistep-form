@@ -396,8 +396,10 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .panes-container {
+  --pane-width: 100vw;
+
   margin-top: calc(var(--size-800) * -1);
-  width: 100vw;
+  width: var(--pane-width);
   overflow: hidden;
   /* overflow-y: auto; */
 }
@@ -406,7 +408,7 @@ a:where(:hover, :focus, :focus-visible) {
   --panes-translate: 0 0;
 
   display: grid;
-  grid-template-columns: repeat(5, 100vw);
+  grid-template-columns: repeat(5, var(--pane-width));
   grid-template-rows: auto;
   translate: var(--panes-translate);
   transition: translate 0.3s ease-in-out;
@@ -498,7 +500,9 @@ a:where(:hover, :focus, :focus-visible) {
     padding-bottom: 0;
   }
 
-  .pane-container {
+  .panes-container {
+    --pane-width: 39.625rem;
+
     margin-top: 0;
     width: 100%;
   }
