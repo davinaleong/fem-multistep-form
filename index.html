@@ -34,15 +34,15 @@
             <p class="step-text">Step 1</p>
             <h2 class="step-heading">Your Info</h2>
           </li>
-          <li class="steps-list__item tt-uppercase" data-element="step-2">
+          <li class="steps-list__item tt-uppercase" data-element="step-1">
             <p class="step-text">Step 2</p>
             <h2 class="step-heading">Select Plan</h2>
           </li>
-          <li class="steps-list__item tt-uppercase" data-element="step-3">
+          <li class="steps-list__item tt-uppercase" data-element="step-2">
             <p class="step-text">Step 3</p>
             <h2 class="step-heading">Add-ons</h2>
           </li>
-          <li class="steps-list__item tt-uppercase" data-element="step-4">
+          <li class="steps-list__item tt-uppercase" data-element="step-3">
             <p class="step-text">Step 4</p>
             <h2 class="step-heading">Summary</h2>
           </li>
@@ -63,23 +63,23 @@
                   Please provide your name, email address, and phone number.
                 </p>
 
-                <form action="#" class="form personal-info-form">
+                <form id="personal-info-form" class="form personal-info-form">
                   <div class="form__group">
-                    <label for="1-name" class="form__label">Name</label>
+                    <label for="info-name" class="form__label">Name</label>
                     <div class="form__required-text">
                       This field is required
                     </div>
                     <input
                       type="text"
                       name="name"
-                      id="1-name"
+                      id="info-name"
                       class="form__input"
                       placeholder="e.g. Stephen King"
                     />
                   </div>
 
                   <div class="form__group">
-                    <label for="1-email" class="form__label"
+                    <label for="info-email" class="form__label"
                       >Email Address</label
                     >
                     <div class="form__required-text">
@@ -88,14 +88,14 @@
                     <input
                       type="email"
                       name="email"
-                      id="1-email"
+                      id="info-email"
                       class="form__input"
                       placeholder="e.g. stephenking@lorem.com"
                     />
                   </div>
 
                   <div class="form__group">
-                    <label for="1-phone" class="form__label"
+                    <label for="info-phone" class="form__label"
                       >Phone Number</label
                     >
                     <div class="form__required-text">
@@ -104,7 +104,7 @@
                     <input
                       type="tel"
                       name="phone"
-                      id="1-phone"
+                      id="info-phone"
                       class="form__input"
                       placeholder="e.g. +1 234 567 890"
                     />
@@ -123,7 +123,7 @@
                 </p>
 
                 <form
-                  action="#"
+                  id="plan-form"
                   class="form plan-form"
                   data-selected-plan="arcade"
                   data-selected-billing="monthly"
@@ -132,12 +132,12 @@
                     <input
                       type="radio"
                       name="price"
-                      id="2-arcade-monthly-radio"
+                      id="plan-arcade-monthly-radio"
                       class="plan-form__radio visually-hidden"
                       value="arcade|monthly|9"
                     />
                     <label
-                      for="2-arcade-monthly-radio"
+                      for="plan-arcade-monthly-radio"
                       class="plan-form__label"
                     >
                       <img
@@ -154,12 +154,12 @@
                     <input
                       type="radio"
                       name="price"
-                      id="2-advanced-monthly-radio"
+                      id="plan-advanced-monthly-radio"
                       class="plan-form__radio visually-hidden"
                       value="advanced|monthly|12"
                     />
                     <label
-                      for="2-advanced-monthly-radio"
+                      for="plan-advanced-monthly-radio"
                       class="plan-form__label"
                     >
                       <img
@@ -176,11 +176,14 @@
                     <input
                       type="radio"
                       name="price"
-                      id="2-pro-monthly-radio"
+                      id="plan-pro-monthly-radio"
                       class="plan-form__radio visually-hidden"
                       value="pro|monthly|15"
                     />
-                    <label for="2-pro-monthly-radio" class="plan-form__label">
+                    <label
+                      for="plan-pro-monthly-radio"
+                      class="plan-form__label"
+                    >
                       <img
                         src="./images/icon-pro.svg"
                         alt=""
@@ -195,11 +198,14 @@
                     <input
                       type="radio"
                       name="price"
-                      id="2-arcade-yearly-radio"
+                      id="plan-arcade-yearly-radio"
                       class="plan-form__radio visually-hidden"
                       value="arcade|yearly|90"
                     />
-                    <label for="2-arcade-yearly-radio" class="plan-form__label">
+                    <label
+                      for="plan-arcade-yearly-radio"
+                      class="plan-form__label"
+                    >
                       <img
                         src="./images/icon-arcade.svg"
                         alt=""
@@ -215,12 +221,12 @@
                     <input
                       type="radio"
                       name="price"
-                      id="2-advanced-yearly-radio"
+                      id="plan-advanced-yearly-radio"
                       class="plan-form__radio visually-hidden"
                       value="advanced|yearly|120"
                     />
                     <label
-                      for="2-advanced-yearly-radio"
+                      for="plan-advanced-yearly-radio"
                       class="plan-form__label"
                     >
                       <img
@@ -238,11 +244,11 @@
                     <input
                       type="radio"
                       name="price"
-                      id="2-pro-yearly-radio"
+                      id="plan-pro-yearly-radio"
                       class="plan-form__radio visually-hidden"
                       value="pro|yearly|150"
                     />
-                    <label for="2-pro-yearly-radio" class="plan-form__label">
+                    <label for="plan-pro-yearly-radio" class="plan-form__label">
                       <img
                         src="./images/icon-pro.svg"
                         alt=""
@@ -258,13 +264,13 @@
                     <input
                       type="checkbox"
                       name="yearly"
-                      id="2-billing"
+                      id="plan-billing"
                       class="plan-form__lightswitch"
                     />
-                    <label for="2-billing" class="plan-form__label-billing"
+                    <label for="plan-billing" class="plan-form__label-billing"
                       >Monthly</label
                     >
-                    <label for="2-billing" class="plan-form__label-billing"
+                    <label for="plan-billing" class="plan-form__label-billing"
                       >Yearly</label
                     >
                   </div>
@@ -280,7 +286,7 @@
                 </p>
 
                 <form
-                  action=""
+                  id="addons-form"
                   class="form addons-form"
                   data-selected-billing="monthly"
                 >
@@ -289,11 +295,11 @@
                       type="checkbox"
                       name="addons[]"
                       value="Online service|monthly|1"
-                      id="3-monthly-online-service"
+                      id="addons-monthly-online-service"
                       class="addons-form-input__checkbox | visually-hidden"
                     />
                     <label
-                      for="3-monthly-online-service"
+                      for="addons-monthly-online-service"
                       class="addons-form__label"
                     >
                       <div class="addons-form__checkbox"></div>
@@ -310,11 +316,11 @@
                       type="checkbox"
                       name="addons[]"
                       value="Larger storage|monthly|2"
-                      id="3-monthly-larger-storage"
+                      id="addons-monthly-larger-storage"
                       class="addons-form-input__checkbox | visually-hidden"
                     />
                     <label
-                      for="3-monthly-larger-storage"
+                      for="addons-monthly-larger-storage"
                       class="addons-form__label"
                     >
                       <div class="addons-form__checkbox"></div>
@@ -329,11 +335,11 @@
                       type="checkbox"
                       name="addons[]"
                       value="Customizable profile|monthly|2"
-                      id="3-monthly-customizable-profile"
+                      id="addons-monthly-customizable-profile"
                       class="addons-form-input__checkbox | visually-hidden"
                     />
                     <label
-                      for="3-monthly-customizable-profile"
+                      for="addons-monthly-customizable-profile"
                       class="addons-form__label"
                     >
                       <div class="addons-form__checkbox"></div>
@@ -350,11 +356,11 @@
                       type="checkbox"
                       name="addons[]"
                       value="Online service|yearly|10"
-                      id="3-yearly-online-service"
+                      id="addons-yearly-online-service"
                       class="addons-form-input__checkbox | visually-hidden"
                     />
                     <label
-                      for="3-yearly-online-service"
+                      for="addons-yearly-online-service"
                       class="addons-form__label"
                     >
                       <div class="addons-form__checkbox"></div>
@@ -371,11 +377,11 @@
                       type="checkbox"
                       name="addons[]"
                       value="Larger storage|yearly|20"
-                      id="3-yearly-larger-storage"
+                      id="addons-yearly-larger-storage"
                       class="addons-form-input__checkbox | visually-hidden"
                     />
                     <label
-                      for="3-yearly-larger-storage"
+                      for="addons-yearly-larger-storage"
                       class="addons-form__label"
                     >
                       <div class="addons-form__checkbox"></div>
@@ -390,11 +396,11 @@
                       type="checkbox"
                       name="addons[]"
                       value="Customizable profile|yearly|20"
-                      id="3-yearly-customizable-profile"
+                      id="addons-yearly-customizable-profile"
                       class="addons-form-input__checkbox | visually-hidden"
                     />
                     <label
-                      for="3-yearly-customizable-profile"
+                      for="addons-yearly-customizable-profile"
                       class="addons-form__label"
                     >
                       <div class="addons-form__checkbox"></div>
@@ -474,12 +480,17 @@
         </div>
       </div>
       <div class="card-footer">
-        <button class="btn btn-link" type="button" data-element="btn-go-back">
+        <button
+          class="btn btn-link"
+          type="button"
+          data-element="btn-go-back"
+        >
           Go Back
         </button>
         <button
           class="btn btn-primary"
-          type="button"
+          type="submit"
+          form="personal-info-form"
           data-element="btn-next-step"
         >
           Next Step
