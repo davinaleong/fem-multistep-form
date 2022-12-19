@@ -66,6 +66,12 @@ const personalInfoFormEl = document.querySelector(
   `[data-element="pane-0"] form`
 )
 const planFormEl = document.querySelector(`[data-element="pane-1"] form`)
+const planFormFirstMonthlyRadioEl = document.querySelector(
+  `.form-group[data-plan="arcade"][data-billing="mo"] input[type=radio]`
+)
+const planFormFirstYearlyRadioEl = document.querySelector(
+  `.form-group[data-plan="arcade"][data-billing="yr"] input[type=radio]`
+)
 const planFormRadioEls = planFormEl.querySelectorAll(`input[type="radio"]`)
 const addonsFormEl = document.querySelector(`[data-element="pane-2"] form`)
 
@@ -79,31 +85,27 @@ personalInfoFormEl.addEventListener(`submit`, (event) =>
 )
 
 const billingInputEl = planFormEl.querySelector(`input[name="yearly"]`)
-billingInputEl.addEventListener(`change`, (event) => {
+billingInputEl.addEventListener(`click`, (event) => {
   console.log(`billing input clicked`)
-  console.log(event.target.value)
-  const checked = billingInputEl.getAttribute(checkedAttr)
 
-  planFormRadioEls.forEach((planFormRadioEl) =>
-    planFormRadioEl.removeAttribute(checkedAttr)
+  planFormRadioEls.forEach(
+    (planFormRadioEl) => (planFormRadioEl.checked = false)
   )
 
   // Yearly
-  if (checked) {
+  if (billingInputEl.checked) {
     formValues.billing = billings.yearly
+    planFormFirstYearlyRadioEl.checked = true
   }
 
   // Monthly
   else {
     formValues.billing = billings.monthly
+    planFormFirstMonthlyRadioEl.checked = true
   }
 
   planFormEl.setAttribute(dataSelectedBilling, formValues.billing)
-  planFormEl
-    .querySelector(
-      `.form-group[data-plan="${formValues.billing}"]:first-child input[type="radio"]`
-    )
-    .setAttribute(checkedAttr, checked)
+  addonsFormEl.setAttribute(dataSelectedBilling, formValues.billing)
 })
 planFormEl.addEventListener(`submit`, (event) => onplanFormElSubmit(event))
 

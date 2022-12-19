@@ -132,13 +132,14 @@
                   data-selected-plan="arcade"
                   data-selected-billing="mo"
                 >
-                  <div class="form-group" data-plan="mo">
+                  <div class="form-group" data-plan="arcade" data-billing="mo">
                     <input
                       type="radio"
                       name="plan"
                       id="plan-arcade-monthly-radio"
                       class="plan-form__radio visually-hidden"
                       value="arcade|monthly|9"
+                      checked
                     />
                     <label
                       for="plan-arcade-monthly-radio"
@@ -154,7 +155,11 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="mo">
+                  <div
+                    class="form-group"
+                    data-plan="advanced"
+                    data-billing="mo"
+                  >
                     <input
                       type="radio"
                       name="plan"
@@ -176,7 +181,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="mo">
+                  <div class="form-group" data-plan="pro" data-billing="mo">
                     <input
                       type="radio"
                       name="plan"
@@ -198,7 +203,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="yr">
+                  <div class="form-group" data-plan="arcade" data-billing="yr">
                     <input
                       type="radio"
                       name="plan"
@@ -221,7 +226,11 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="yr">
+                  <div
+                    class="form-group"
+                    data-plan="advanced"
+                    data-billing="yr"
+                  >
                     <input
                       type="radio"
                       name="plan"
@@ -244,7 +253,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group" data-plan="yr">
+                  <div class="form-group" data-plan="pro" data-billing="yr">
                     <input
                       type="radio"
                       name="plan"
@@ -292,9 +301,9 @@
                 <form
                   id="addons-form"
                   class="form addons-form"
-                  data-selected-billing="monthly"
+                  data-selected-billing="mo"
                 >
-                  <div class="form-group form-group__addon" data-plan="mo">
+                  <div class="form-group form-group__addon" data-billing="mo">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -315,7 +324,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="mo">
+                  <div class="form-group form-group__addon" data-billing="mo">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -334,7 +343,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="mo">
+                  <div class="form-group form-group__addon" data-billing="mo">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -355,7 +364,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="yr">
+                  <div class="form-group form-group__addon" data-billing="yr">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -376,7 +385,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="yr">
+                  <div class="form-group form-group__addon" data-billing="yr">
                     <input
                       type="checkbox"
                       name="addons[]"
@@ -395,7 +404,7 @@
                     </label>
                   </div>
 
-                  <div class="form-group form-group__addon" data-plan="yr">
+                  <div class="form-group form-group__addon" data-billing="yr">
                     <input
                       type="checkbox"
                       name="addons[]"

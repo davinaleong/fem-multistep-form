@@ -551,11 +551,11 @@ a:where(:hover, :focus, :focus-visible) {
   background-color: var(--form-label-bg-clr);
 }
 
-.form-group[data-plan="yr"] .plan-form__label {
+.form-group[data-billing="yr"] .plan-form__label {
   grid-template-rows: repeat(3, max-content);
 }
 
-.form-group[data-plan="yr"] .plan-form__label__icon {
+.form-group[data-billing="yr"] .plan-form__label__icon {
   grid-row: 1 / -1;
 }
 
@@ -564,19 +564,19 @@ a:where(:hover, :focus, :focus-visible) {
   font-size: var(--fs-300);
 }
 
-.form-group[data-plan="mo"] {
+.form-group[data-billing="mo"] {
   display: none;
 }
 
-.form-group[data-plan="yr"] {
+.form-group[data-billing="yr"] {
   display: none;
 }
 
-.plan-form[data-selected-billing="mo"] .form-group[data-plan="mo"] {
+.plan-form[data-selected-billing="mo"] .form-group[data-billing="mo"] {
   display: grid;
 }
 
-.plan-form[data-selected-billing="yr"] .form-group[data-plan="yr"] {
+.plan-form[data-selected-billing="yr"] .form-group[data-billing="yr"] {
   display: grid;
 }
 
@@ -716,11 +716,11 @@ a:where(:hover, :focus, :focus-visible) {
   background-position: center;
 }
 
-.addons-form[data-selected-billing="monthly"] .form-group[data-plan="monthly"] {
+.addons-form[data-selected-billing="monthly"] .form-group[data-billing="monthly"] {
   display: grid;
 }
 
-.addons-form[data-selected-billing="yearly"] .form-group[data-plan="yearly"] {
+.addons-form[data-selected-billing="yearly"] .form-group[data-billing="yearly"] {
   display: grid;
 }
 
