@@ -313,8 +313,10 @@ a:where(:hover, :focus, :focus-visible) {
 
 /** Content - Card **/
 .card {
-  --card-header-height: 172px;
-  --card-footer-height: 72px;
+  --card-width: 58.75rem;
+  --card-height: 37.5rem;
+  --card-header-height: 10.75rem;
+  --card-footer-height: 4.5rem;
 
   width: 100%;
   min-height: 100vh;
@@ -465,6 +467,52 @@ a:where(:hover, :focus, :focus-visible) {
 [data-current-pane="3"] [data-element="btn-confirm"],
 [data-current-pane="4"] [data-element="btn-confirm"] {
   display: inline-flex;
+}
+
+@media screen and (min-width: 64.063em) {
+  .card {
+    display: grid;
+    background-color: var(--clr-neutral-50);
+    grid-template-columns: 0.3fr 0.7fr;
+    grid-template-rows: repeat(5, 0.2fr);
+    max-width: var(--card-width);
+    min-height: var(--card-height);
+    padding: var(--size-400);
+    border-radius: var(--size-400);
+    box-shadow: 0 0.3em 0.7em 0 hsla(0, 0%, 0%, 0.1);
+  }
+
+  .card-header {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    padding: var(--size-400);
+    border-radius: var(--size-200);
+    background-image: url("./../images/bg-sidebar-desktop.svg");
+    min-height: unset;
+  }
+
+  .card-body {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    min-height: none;
+    padding-bottom: 0;
+  }
+
+  .pane-container {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .card-footer {
+    grid-column: 2;
+    grid-row: 5 / 6;
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: 0;
+    min-height: unset;
+    background-color: transparent;
+  }
 }
 
 /** Content - Forms **/
