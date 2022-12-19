@@ -1,6 +1,7 @@
 console.log(`main.js loaded`)
 
 // Variables
+// Variables - Objects
 const directions = {
   prev: "prev",
   next: "next",
@@ -38,8 +39,7 @@ const formValues = {
   },
   plan: {
     name: "",
-    pro: "",
-    note: "",
+    price: "",
   },
   addons: [
     // {
@@ -49,6 +49,7 @@ const formValues = {
   ],
 }
 
+// Variables - Attributes
 const styleAttr = `style`
 const formAttr = `form`
 const checkedAttr = `checked`
@@ -58,6 +59,7 @@ const dataHasError = `data-has-error`
 const dataSelectedPlan = `data-selected-plan`
 const dataSelectedBilling = `data-selected-billing`
 
+// Variables - Elements
 const cardEl = document.querySelector(`[data-element="card"]`)
 const stepsListEl = document.querySelector(`[data-element="steps-list"]`)
 const panesEl = document.querySelector(`[data-element="panes"]`)
@@ -73,18 +75,21 @@ const planFormFirstYearlyRadioEl = document.querySelector(
   `.form-group[data-plan="arcade"][data-billing="yr"] input[type=radio]`
 )
 const planFormRadioEls = planFormEl.querySelectorAll(`input[type="radio"]`)
+const billingInputEl = planFormEl.querySelector(`input[name="yearly"]`)
 const addonsFormEl = document.querySelector(`[data-element="pane-2"] form`)
 
 const btnGoBackEl = document.querySelector(`[data-element="btn-go-back"]`)
 const btnNextStepEl = document.querySelector(`[data-element="btn-next-step"]`)
 const btnConfirmEl = document.querySelector(`[data-element="btn-confirm"]`)
 
+// Setup
+resetForm()
+
 // Adding Event Listeners
 personalInfoFormEl.addEventListener(`submit`, (event) =>
-  onpersonalInfoFormElSubmit(event)
+  onPersonalInfoFormElSubmit(event)
 )
 
-const billingInputEl = planFormEl.querySelector(`input[name="yearly"]`)
 billingInputEl.addEventListener(`click`, (event) => {
   console.log(`billing input clicked`)
 
@@ -107,11 +112,7 @@ billingInputEl.addEventListener(`click`, (event) => {
   planFormEl.setAttribute(dataSelectedBilling, formValues.billing)
   addonsFormEl.setAttribute(dataSelectedBilling, formValues.billing)
 })
-planFormEl.addEventListener(`submit`, (event) => onplanFormElSubmit(event))
-
-stepsListEl
-  .querySelector(`[data-element="step-0"]`)
-  .setAttribute(dataActiveAttr, true)
+planFormEl.addEventListener(`submit`, (event) => onPlanFormElSubmit(event))
 
 btnGoBackEl.addEventListener(`click`, (event) => {
   let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
@@ -132,6 +133,32 @@ btnConfirmEl.addEventListener(`click`, (event) => {
 })
 
 // Functions
+function resetForm() {
+  stepsListEl
+    .querySelector(`[data-element="step-0"]`)
+    .setAttribute(dataActiveAttr, true)
+
+  planFormRadioEls.forEach(
+    (planFormRadioEl) => (planFormRadioEl.checked = false)
+  )
+
+  planFormFirstMonthlyRadioEl.checked = true
+  planFormFirstYearlyRadioEl.checked = false
+  billingInputEl.checked = false
+  ;(formValues.billing = billings.monthly),
+    (formValues.personalInfo = {
+      name: "",
+      emailAddress: "",
+      phoneNumber: "",
+    })
+  formValues.plan = {
+    name: "",
+    pro: "",
+    note: "",
+  }
+  formValues.addons = []
+}
+
 function translatePanes(currentPane) {
   console.log(`fn: translatePanes`)
 
@@ -165,9 +192,8 @@ function translatePanes(currentPane) {
   panesEl.setAttribute(styleAttr, `--panes-translate: ${translate}px 0`)
 }
 
-function onpersonalInfoFormElSubmit(event) {
-  console.log(`fn: onpersonalInfoFormElSubmit`)
-
+function onPersonalInfoFormElSubmit(event) {
+  console.log(`fn: onPersonalInfoFormElSubmit`)
   event.preventDefault()
 
   formValues.personalInfo = {
@@ -229,8 +255,20 @@ function onpersonalInfoFormElSubmit(event) {
   }
 }
 
-function onplanFormElSubmit(event) {
+function onPlanFormElSubmit(event) {
+  console.log(`fn: onPlanFormElSubmit`)
   event.preventDefault()
 
-  console.log(`fn: onplanFormElSubmit`)
+  const plan = planFormEl.elements[`plan`]
+  if (plan.value) {
+    const parts = plan.value.split("|")
+    formValues.plan = {
+      name: parts[0],
+      price: parts[1],
+    }
+
+    let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
+    currentPane++
+    translatePanes(currentPane)
+  }
 }
