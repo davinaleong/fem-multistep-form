@@ -49,6 +49,33 @@ const formValues = {
   ],
 }
 
+const sampleFormValues = {
+  billing: "mo",
+  personalInfo: {
+    name: "Davina Leong",
+    emailAddress: "leong.shi.yun@gmail.com",
+    phoneNumber: "+65 1234 5678",
+  },
+  plan: {
+    name: "Arcade",
+    price: "9",
+  },
+  addons: [
+    {
+      name: "Online service",
+      price: "1",
+    },
+    {
+      name: "Larger storage",
+      price: "2",
+    },
+    {
+      name: "Customizable profile",
+      price: "2",
+    },
+  ],
+}
+
 // Variables - Attributes
 const styleAttr = `style`
 const formAttr = `form`
@@ -80,6 +107,8 @@ const billingInputEl = planFormEl.querySelector(`input[name="yearly"]`)
 const addonsFormEl = document.querySelector(`[data-element="pane-2"] form`)
 const addonsCheckboxEls = addonsFormEl.querySelectorAll(`input[name="addons"]`)
 
+const receiptEl = document.querySelector(`[data-element="receipt"]`)
+
 const btnGoBackEl = document.querySelector(`[data-element="btn-go-back"]`)
 const btnNextStepEl = document.querySelector(`[data-element="btn-next-step"]`)
 const btnConfirmEl = document.querySelector(`[data-element="btn-confirm"]`)
@@ -93,8 +122,6 @@ personalInfoFormEl.addEventListener(`submit`, (event) =>
 )
 
 billingInputEl.addEventListener(`click`, (event) => {
-  console.log(`billing input clicked`)
-
   planFormRadioEls.forEach(
     (planFormRadioEl) => (planFormRadioEl.checked = false)
   )
@@ -129,12 +156,6 @@ btnGoBackEl.addEventListener(`click`, (event) => {
   translatePanes(currentPane)
 })
 
-// btnNextStepEl.addEventListener(`click`, (event) => {
-//   let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
-//   currentPane++
-//   translatePanes(currentPane)
-// })
-
 btnConfirmEl.addEventListener(`click`, (event) => {
   let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
   currentPane++
@@ -159,7 +180,6 @@ function resetForm() {
   addonsCheckboxEls.forEach(
     (addonsCheckboxEl) => (addonsCheckboxEl.checked = false)
   )
-
   ;(formValues.billing = billings.monthly),
     (formValues.personalInfo = {
       name: "",
@@ -191,8 +211,6 @@ function translatePanes(currentPane) {
 
   const currentForm = currentPane <= 3 ? forms[currentPane] : ``
 
-  console.log(`currentForm: ${currentForm}`, `currentPane: ${currentPane}`)
-
   const paneEl = panesEl.querySelector(`[data-element="pane-1"]`)
   const paneWidth = paneEl.clientWidth
   const translate = currentPane * paneWidth * -1
@@ -201,9 +219,13 @@ function translatePanes(currentPane) {
   stepItemEls.forEach((stepItemEl) =>
     stepItemEl.removeAttribute(dataActiveAttr)
   )
-  stepsListEl
-    .querySelector(`[data-element="step-${currentPane}"]`)
-    .setAttribute(dataActiveAttr, true)
+  const currentPaneEl = stepsListEl.querySelector(
+    `[data-element="step-${currentPane}"]`
+  )
+
+  if (currentPaneEl) {
+    currentPaneEl.setAttribute(dataActiveAttr, true)
+  }
 
   btnNextStepEl.setAttribute(formAttr, currentForm)
 
@@ -307,7 +329,82 @@ function onAddonsFormSubmit(event) {
     }
   })
 
-  console.log(formValues.addons)
+  generateReceipt()
 
-  //TODO: Translate pane
+  let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
+  currentPane++
+  translatePanes(currentPane)
+}
+
+function generateReceipt() {
+  console.log(`fn: generateReceipt`)
+
+  const { billing, plan, addons } = formValues
+  let monthlyOrYearly = `Monthly`
+  let monthOrYear = `month`
+  let plus = `+`
+  if (billing === billings.yearly) {
+    monthlyOrYearly = `Yearly`
+    monthOrYear = `year`
+    plus = ``
+  }
+
+  let addonsHtml = ``
+
+  let total = 0
+  total += Number(plan.price)
+  addons.forEach((addon) => {
+    const { name, price } = addon
+
+    addonsHtml += `
+      <li class="receipt__addons__item">
+        <p class="addons-title">${name}</p>
+        <p class="addon-price">+$${price}/${billing}</p>
+      </li>
+    `
+    total += Number(price)
+  })
+
+  const receiptHtml = `
+    <div class="receipt__line-items">
+        <div class="receipt__plan">
+          <p class="receipt__plan-title">Arcade (${monthlyOrYearly})</p>
+          <p class="receipt__plan-link">
+            <button
+              class="btn btn-link"
+              type="button"
+              data-element="btn-change"
+            >
+              Change
+            </button>
+          </p>
+          <p class="receipt__plan-price">$${plan.price}/${billing}</p>
+        </div>
+        <div class="receipt__divider"></div>
+        <ul class="receipt__addons" role="list">${addonsHtml}</ul>
+      </div>
+
+      <div class="receipt__total">
+        <p class="receipt__total-title">Total (per ${monthOrYear})</p>
+        <p class="receipt__total-price">${plus}$${total}/${billing}</p>
+      </div>
+  `
+
+  receiptEl.innerHTML = receiptHtml
+  receiptEl
+    .querySelector(`[data-element="btn-change"]`)
+    .addEventListener(`click`, (event) => onChangeClicked(event))
+}
+
+function onChangeClicked() {
+  console.log(`fn: onChangeClicked`)
+
+  formValues.plan = {
+    name: "",
+    price: "",
+  }
+
+  formValues.addons = []
+
+  translatePanes(1)
 }
