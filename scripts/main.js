@@ -76,7 +76,9 @@ const planFormFirstYearlyRadioEl = document.querySelector(
 )
 const planFormRadioEls = planFormEl.querySelectorAll(`input[type="radio"]`)
 const billingInputEl = planFormEl.querySelector(`input[name="yearly"]`)
+
 const addonsFormEl = document.querySelector(`[data-element="pane-2"] form`)
+const addonsCheckboxEls = addonsFormEl.querySelectorAll(`input[name="addons"]`)
 
 const btnGoBackEl = document.querySelector(`[data-element="btn-go-back"]`)
 const btnNextStepEl = document.querySelector(`[data-element="btn-next-step"]`)
@@ -95,6 +97,10 @@ billingInputEl.addEventListener(`click`, (event) => {
 
   planFormRadioEls.forEach(
     (planFormRadioEl) => (planFormRadioEl.checked = false)
+  )
+
+  addonsCheckboxEls.forEach(
+    (addonsCheckboxEl) => (addonsCheckboxEl.checked = false)
   )
 
   // Yearly
@@ -123,11 +129,11 @@ btnGoBackEl.addEventListener(`click`, (event) => {
   translatePanes(currentPane)
 })
 
-btnNextStepEl.addEventListener(`click`, (event) => {
-  let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
-  // currentPane++
-  // translatePanes(currentPane)
-})
+// btnNextStepEl.addEventListener(`click`, (event) => {
+//   let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
+//   currentPane++
+//   translatePanes(currentPane)
+// })
 
 btnConfirmEl.addEventListener(`click`, (event) => {
   let currentPane = Number(cardEl.getAttribute(dataCurrentPaneAttr))
@@ -147,7 +153,13 @@ function resetForm() {
 
   planFormFirstMonthlyRadioEl.checked = true
   planFormFirstYearlyRadioEl.checked = false
+
   billingInputEl.checked = false
+
+  addonsCheckboxEls.forEach(
+    (addonsCheckboxEl) => (addonsCheckboxEl.checked = false)
+  )
+
   ;(formValues.billing = billings.monthly),
     (formValues.personalInfo = {
       name: "",
@@ -285,8 +297,6 @@ function onAddonsFormSubmit(event) {
   event.preventDefault()
   formValues.addons = []
 
-  const addonsCheckboxEls =
-    addonsFormEl.querySelectorAll(`input[name="addons"]`)
   addonsCheckboxEls.forEach((addonsCheckboxEl) => {
     if (addonsCheckboxEl.checked) {
       const parts = splitString(addonsCheckboxEl.value)
