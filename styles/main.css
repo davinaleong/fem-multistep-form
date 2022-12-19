@@ -367,7 +367,7 @@ a:where(:hover, :focus, :focus-visible) {
   font-weight: var(--fw-bold);
 }
 
-.steps-list__item.active::before {
+.steps-list__item[data-active="true"]::before {
   color: var(--clr-primary-700);
   background-color: var(--step-clr);
 }
@@ -444,7 +444,7 @@ a:where(:hover, :focus, :focus-visible) {
   justify-content: space-between;
 }
 
-[data-current-step="1"] [data-element="btn-go-back"] {
+[data-current-pane="0"] [data-element="btn-go-back"] {
   display: none;
 }
 
@@ -457,7 +457,13 @@ a:where(:hover, :focus, :focus-visible) {
   display: none;
 }
 
-[data-current-step="5"] [data-element="btn-confirm"] {
+[data-current-pane="3"] [data-element="btn-next-step"],
+[data-current-pane="4"] [data-element="btn-next-step"] {
+  display: none;
+}
+
+[data-current-pane="3"] [data-element="btn-confirm"],
+[data-current-pane="4"] [data-element="btn-confirm"] {
   display: inline-flex;
 }
 

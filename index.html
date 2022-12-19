@@ -27,22 +27,22 @@
     <script defer src="./scripts/main.js"></script>
   </head>
   <body class="bg-neutral-200">
-    <main class="card" data-current-step="1">
+    <main class="card" data-current-pane="0" data-element="card">
       <div class="card-header">
         <ul class="steps-list" role="list" data-element="steps-list">
-          <li class="steps-list__item active tt-uppercase">
+          <li class="steps-list__item tt-uppercase" data-element="step-0">
             <p class="step-text">Step 1</p>
             <h2 class="step-heading">Your Info</h2>
           </li>
-          <li class="steps-list__item tt-uppercase">
+          <li class="steps-list__item tt-uppercase" data-element="step-2">
             <p class="step-text">Step 2</p>
             <h2 class="step-heading">Select Plan</h2>
           </li>
-          <li class="steps-list__item tt-uppercase">
+          <li class="steps-list__item tt-uppercase" data-element="step-3">
             <p class="step-text">Step 3</p>
             <h2 class="step-heading">Add-ons</h2>
           </li>
-          <li class="steps-list__item tt-uppercase">
+          <li class="steps-list__item tt-uppercase" data-element="step-4">
             <p class="step-text">Step 4</p>
             <h2 class="step-heading">Summary</h2>
           </li>
@@ -53,10 +53,9 @@
           <div
             class="panes"
             data-element="panes"
-            data-current-pane="1"
             style="--panes-translate: 0 0"
           >
-            <div class="pane-container" data-element="pane-1">
+            <div class="pane-container" data-element="pane-0">
               <div class="pane">
                 <h3 class="fw-bold fs-600 text-primary-700">Personal Info</h3>
 
@@ -113,7 +112,7 @@
                 </form>
               </div>
             </div>
-            <div class="pane-container" data-element="pane-2">
+            <div class="pane-container" data-element="pane-1">
               <div class="pane">
                 <h3 class="fw-bold fs-600 text-primary-700">
                   Select your plan
@@ -135,7 +134,7 @@
                       name="price"
                       id="2-arcade-monthly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="monthly|9"
+                      value="arcade|monthly|9"
                     />
                     <label
                       for="2-arcade-monthly-radio"
@@ -157,7 +156,7 @@
                       name="price"
                       id="2-advanced-monthly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="monthly|12"
+                      value="advanced|monthly|12"
                     />
                     <label
                       for="2-advanced-monthly-radio"
@@ -179,7 +178,7 @@
                       name="price"
                       id="2-pro-monthly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="monthly|15"
+                      value="pro|monthly|15"
                     />
                     <label for="2-pro-monthly-radio" class="plan-form__label">
                       <img
@@ -198,7 +197,7 @@
                       name="price"
                       id="2-arcade-yearly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="yearly|90"
+                      value="arcade|yearly|90"
                     />
                     <label for="2-arcade-yearly-radio" class="plan-form__label">
                       <img
@@ -218,7 +217,7 @@
                       name="price"
                       id="2-advanced-yearly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="yearly|120"
+                      value="advanced|yearly|120"
                     />
                     <label
                       for="2-advanced-yearly-radio"
@@ -241,7 +240,7 @@
                       name="price"
                       id="2-pro-yearly-radio"
                       class="plan-form__radio visually-hidden"
-                      value="yearly|150"
+                      value="pro|yearly|150"
                     />
                     <label for="2-pro-yearly-radio" class="plan-form__label">
                       <img
@@ -272,7 +271,7 @@
                 </form>
               </div>
             </div>
-            <div class="pane-container" data-element="pane-3">
+            <div class="pane-container" data-element="pane-2">
               <div class="pane">
                 <h3 class="fw-bold fs-600 text-primary-700">Pick add-ons</h3>
 
@@ -409,7 +408,7 @@
                 </form>
               </div>
             </div>
-            <div class="pane-container" data-element="pane-4">
+            <div class="pane-container" data-element="pane-3">
               <div class="pane">
                 <h3 class="fw-bold fs-600 text-primary-700">Finishing up</h3>
 
@@ -452,7 +451,7 @@
                 </div>
               </div>
             </div>
-            <div class="pane-container" data-element="pane-5">
+            <div class="pane-container" data-element="pane-4">
               <div class="pane pane-thank-you">
                 <div>
                   <img
