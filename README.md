@@ -2,9 +2,9 @@
 
 Another simple challenge from Frontend Mentor.
 
-The challenge can be found [here](https://www.frontendmentor.io/challenges/news-homepage-H6SWTa1MFl).
+The challenge can be found [here](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
 
-Demo page can be found [here](https://davinaleong.github.io/fem-news-homepage/)!
+Demo page can be found [here](https://davinaleong.github.io/fem-multistep-form/)!
 
 ## Getting Started
 
