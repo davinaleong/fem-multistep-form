@@ -265,13 +265,18 @@ a:where(:hover, :focus, :focus-visible) {
   --btn-bg-clr: transparent;
   --btn-border-clr: transparent;
 
-  --btn-hover-clr: var(--clr-primary-600);
+  --btn-hover-clr: var(--clr-primary-500);
   --btn-hover-bg-clr: transparent;
   --btn-hover-border-clr: transparent;
 
   --btn-padding: 0;
 
   text-decoration: none;
+}
+
+.btn-link {
+  padding: 0;
+  text-decoration: underline;
 }
 
 .btn-brand {
@@ -409,9 +414,11 @@ a:where(:hover, :focus, :focus-visible) {
 
 .panes-container {
   --pane-width: 100vw;
+  --pane-height: auto;
 
   margin-top: calc(var(--size-800) * -1);
   width: var(--pane-width);
+  height: var(--pane-height);
   overflow: hidden;
 }
 
@@ -509,6 +516,7 @@ a:where(:hover, :focus, :focus-visible) {
     bottom: 0;
     min-height: unset;
     background-color: transparent;
+    padding: var(--size-400) var(--size-800);
   }
 
   .steps-list {
@@ -527,13 +535,30 @@ a:where(:hover, :focus, :focus-visible) {
 
   .panes-container {
     --pane-width: 39.625rem;
+    --pane-height: 30.875rem;
 
     margin-top: 0;
   }
 
+  .panes {
+    grid-template-columns: var(--pane-width);
+    grid-template-rows: repeat(5, var(--pane-height));
+  }
+
+  .pane-container {
+    padding-top: var(--size-600);
+    padding-inline: var(--size-800);
+  }
+
   .pane {
+    padding: 0;
     box-shadow: none;
     min-height: unset;
+  }
+
+  .pane-thank-you {
+    justify-content: center;
+    min-height: 100%;
   }
 }
 
@@ -594,17 +619,21 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .plan-form__label {
-  --form-icon-size: 2.5em;
-  --form-label-bg-clr: var(--clr-neutral-400);
-  --form-label-border-clr: var(--clr-neutral-600);
+  --plan-form-icon-size: 2.5em;
+  --plan-form-label-bg-clr: var(--clr-neutral-400);
+  --plan-form-label-border-clr: var(--clr-neutral-600);
 
   display: grid;
-  grid-template-columns: var(--form-icon-size) auto;
+  grid-template-columns: var(--plan-form-icon-size) auto;
   grid-template-rows: repeat(2, max-content);
   gap: 0 var(--size-400);
   padding: var(--size-500);
-  outline: thin solid var(--form-label-border-clr);
+  outline: thin solid var(--plan-form-label-border-clr);
   border-radius: var(--size-200);
+}
+
+.plan-form__label:hover {
+  --plan-form-label-border-clr: var(--clr-primary-500);
 }
 
 .plan-form__label__icon {
@@ -620,8 +649,8 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .plan-form__radio:checked + .plan-form__label {
-  --form-label-border-clr: var(--clr-primary-500);
-  background-color: var(--form-label-bg-clr);
+  --plan-form-label-border-clr: var(--clr-primary-500);
+  background-color: var(--plan-form-label-bg-clr);
 }
 
 .form-group[data-billing="yr"] .plan-form__label {
@@ -654,17 +683,17 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .form-group-billing {
-  --lightswitch-toggle-clr: var(--clr-neutral-200);
+  --lightswitch-toggle-clr: var(--clr-neutral-400);
   --lightswitch-bg-clr: var(--clr-primary-700);
   --lightswitch-width: 3em;
   --lightswitch-height: 1.5em;
   --lightswitch-toggle-size: 1em;
-  --lightswitch-padding: 0.2em;
+  --lightswitch-padding: 0.3em;
 
   display: flex;
   justify-content: center;
   gap: var(--size-400);
-  background-color: var(--clr-neutral-200);
+  background-color: var(--clr-neutral-400);
   padding: var(--size-400);
   border-radius: var(--size-200);
 }
@@ -741,6 +770,11 @@ a:where(:hover, :focus, :focus-visible) {
   outline: thin solid var(--addons-label-border-clr);
   padding: var(--size-400);
   border-radius: var(--size-200);
+  cursor: pointer;
+}
+
+.addons-form__label:hover {
+  --addons-label-border-clr: var(--clr-primary-500);
 }
 
 .addons-form__checkbox {
@@ -773,7 +807,7 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .addons-form-input__checkbox:checked + .addons-form__label {
-  --addons-label-bg-clr: var(--clr-neutral-200);
+  --addons-label-bg-clr: var(--clr-neutral-400);
   --addons-label-border-clr: var(--clr-primary-500);
 }
 
@@ -817,11 +851,6 @@ a:where(:hover, :focus, :focus-visible) {
 .receipt__plan-title {
   color: var(--clr-primary-700);
   font-weight: var(--fw-bold);
-}
-
-.btn-link {
-  padding: 0;
-  text-decoration: underline;
 }
 
 .receipt__plan-price {
@@ -881,20 +910,26 @@ a:where(:hover, :focus, :focus-visible) {
   }
 
   .plan-form__label {
-    --form-icon-size: 3em;
+    --plan-form-icon-size: 3em;
 
     grid-template-columns: auto;
-    grid-template-rows: calc(var(--form-icon-size) * 2.5) repeat(2, max-content);
+    grid-template-rows: calc(var(--plan-form-icon-size) * 2.5) repeat(
+        2,
+        max-content
+      );
     padding: var(--size-400);
   }
 
   .plan-form__label__icon {
     grid-row: 1;
-    max-width: var(--form-icon-size);
+    max-width: var(--plan-form-icon-size);
   }
 
   .form-group[data-billing="yr"] .plan-form__label {
-    grid-template-rows: calc(var(--form-icon-size) * 2.5) repeat(3, max-content);
+    grid-template-rows: calc(var(--plan-form-icon-size) * 2.5) repeat(
+        3,
+        max-content
+      );
   }
 
   .plan-form .form-group-billing {

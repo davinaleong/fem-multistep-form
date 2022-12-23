@@ -1,7 +1,7 @@
 console.log(`main.js loaded`)
 
-// Variables
-// Variables - Objects
+// Constants
+// Constants - Objects
 const directions = {
   prev: "prev",
   next: "next",
@@ -76,7 +76,10 @@ const sampleFormValues = {
   ],
 }
 
-// Variables - Attributes
+// Constants - Breakpoint
+const BREAKPOINT = 940
+
+// Constants - Attributes
 const styleAttr = `style`
 const formAttr = `form`
 const checkedAttr = `checked`
@@ -86,7 +89,7 @@ const dataHasError = `data-has-error`
 const dataSelectedPlan = `data-selected-plan`
 const dataSelectedBilling = `data-selected-billing`
 
-// Variables - Elements
+// Constants - Elements
 const cardEl = document.querySelector(`[data-element="card"]`)
 const stepsListEl = document.querySelector(`[data-element="steps-list"]`)
 const panesEl = document.querySelector(`[data-element="panes"]`)
@@ -211,9 +214,16 @@ function translatePanes(currentPane) {
 
   const currentForm = currentPane <= 3 ? forms[currentPane] : ``
 
+  const windowWidth = window.innerWidth
   const paneEl = panesEl.querySelector(`[data-element="pane-1"]`)
   const paneWidth = paneEl.clientWidth
-  const translate = currentPane * paneWidth * -1
+  const paneHeight = paneEl.clientHeight
+  const translate =
+    windowWidth < BREAKPOINT
+      ? currentPane * paneWidth * -1
+      : currentPane * paneHeight * -1
+  const translateStr =
+    windowWidth < BREAKPOINT ? `${translate}px 0` : `0 ${translate}px`
 
   const stepItemEls = stepsListEl.querySelectorAll(`.steps-list__item`)
   stepItemEls.forEach((stepItemEl) =>
@@ -230,7 +240,7 @@ function translatePanes(currentPane) {
   btnNextStepEl.setAttribute(formAttr, currentForm)
 
   cardEl.setAttribute(dataCurrentPaneAttr, currentPane)
-  panesEl.setAttribute(styleAttr, `--panes-translate: ${translate}px 0`)
+  panesEl.setAttribute(styleAttr, `--panes-translate: ${translateStr}`)
 }
 
 function onPersonalInfoFormElSubmit(event) {
